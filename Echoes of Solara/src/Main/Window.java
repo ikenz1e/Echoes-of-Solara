@@ -3,6 +3,8 @@ import javax.swing.JFrame;
 
 public class Window extends JFrame{
 
+    public GamePanel gamePanel;
+
     public Window(){
         setupWindow();
     }
@@ -12,7 +14,7 @@ public class Window extends JFrame{
         this.setResizable(false);
         this.setTitle("Echoes of Solara ");
 
-        GamePanel gamePanel = new GamePanel();
+        gamePanel = new GamePanel();
         
         this.add(gamePanel);
         this.pack();
@@ -21,6 +23,10 @@ public class Window extends JFrame{
     public void displayWindow(){
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+    }
+
+    public void startGame(){
+        gamePanel.startGameThread();
     }
 
 }
