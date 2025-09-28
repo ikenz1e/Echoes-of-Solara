@@ -47,21 +47,35 @@ public class Player extends Entity{
     }
 
     public void update(){
-        if(keyHandler.wPressed){
-            y -= speed;
-            direction = "up";
-        }
-        else if(keyHandler.sPressed){
-            y += speed;
-            direction = "down";
-        }
-        else if(keyHandler.aPressed){
-            x -= speed;
-            direction = "left";
-        }
-        else if(keyHandler.dPressed){
-            x += speed;
-            direction = "right";
+
+        if (keyHandler.wPressed || keyHandler.sPressed || keyHandler.aPressed || keyHandler.dPressed){
+
+            if(keyHandler.wPressed){
+                y -= speed;
+                direction = "up";
+            }
+            else if(keyHandler.sPressed){
+                y += speed;
+                direction = "down";
+            }
+            else if(keyHandler.aPressed){
+                x -= speed;
+                direction = "left";
+            }
+            else if(keyHandler.dPressed){
+                x += speed;
+                direction = "right";
+            }
+
+            spriteCounter++;
+            if (spriteCounter > 12){
+                if(spriteNumber == 1){
+                    spriteNumber = 2;
+                }else{
+                    spriteNumber = 1;
+                }
+                spriteCounter = 0;
+            }
         }
     }
 
@@ -71,16 +85,32 @@ public class Player extends Entity{
 
         switch (direction) {
             case "up":
-                image = up1;
+                if (spriteNumber == 1){
+                    image = up1;
+                }else{
+                    image = up2;
+                }   
                 break;
             case "down":
-                image = down1;
+                if (spriteNumber == 1){
+                    image = down1;
+                }else{
+                    image = down2;
+                }
                 break;
             case "left":
-                image = left1;
+                if (spriteNumber == 1){
+                    image = left1;
+                }else{
+                    image = left2;
+                }
                 break;
             case "right":
-                image = right1;
+                if (spriteNumber == 1){
+                    image = right1;
+                }else{
+                    image = right2;
+                }
                 break;
             default:
                 break;
